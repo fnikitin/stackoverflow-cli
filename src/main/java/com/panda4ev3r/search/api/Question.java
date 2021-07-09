@@ -1,6 +1,7 @@
 package com.panda4ev3r.search.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import picocli.CommandLine.Help.Ansi;
 
 public final class Question {
     public String title;
@@ -20,5 +21,16 @@ public final class Question {
                 ", answers=" + answers +
                 ", accepted=" + accepted +
                 '}';
+    }
+
+    public static String formatQuestion(final Question question) {
+        return Ansi.AUTO.string(String.format(
+           "@|bold,fg(green) %s|@ %d|%d @|bold,fg(yellow) %s|@%n      %s",
+                question.accepted ? "✓" : "",
+                question.score,
+                question.answers,
+                question.title,
+                question.link
+        ));
     }
 }

@@ -8,8 +8,6 @@ import spock.lang.AutoCleanup
 import spock.lang.Shared
 import spock.lang.Specification
 
-import java.io.ByteArrayOutputStream
-import java.io.PrintStream
 
 class StackoverflowCliCommandSpec extends Specification {
 
@@ -35,10 +33,11 @@ class StackoverflowCliCommandSpec extends Specification {
 
         String[] args = ["search", "-q", "merge maps", "-t", "java", "--verbose"] as String[]
         PicocliRunner.run(StackoverflowCliCommand, ctx, args)
-        out.println(baos.toString());
+        out.println baos.toString()
 
+        // ✓ 9|3 Merge maps in Groovy
         expect:
-        baos.toString().contains("Search command running...")
+        baos.toString() =~ $/✓? \d+\|\d+ [^\n]+\n {6}https://stackoverflow.com/questions/\d+[a-z0-9\-]+/$
     }
 }
 

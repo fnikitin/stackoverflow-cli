@@ -33,7 +33,16 @@ public final class SearchCommand implements Runnable {
     @Override
     public void run() {
         ApiResponse<Question> response = client.search(query, tag, limit, sort);
-        response.items
+        response.items.stream()
+                .map(Question::formatQuestion)
                 .forEach(System.out::println);
+
+        if (verbose) {
+            System.out.printf("Items size: %d | Quota max: %d | Has more: %s\n",
+                    response.items.size(),
+                    response.quotaMax,
+                    response.quotaRemaining,
+                    response.hasMore);
+        }
     }
 }
