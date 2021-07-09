@@ -1,7 +1,12 @@
 package com.panda4ev3r.search;
 
+import com.panda4ev3r.search.api.ApiResponse;
+import com.panda4ev3r.search.api.Question;
+import com.panda4ev3r.search.api.StackOverflowHttpClient;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Command;
+
+import javax.inject.Inject;
 
 @Command(name = "search", description = "Search questions matching criteria",
         mixinStandardHelpOptions = true)
@@ -22,8 +27,13 @@ public final class SearchCommand implements Runnable {
     @Option(names = {"--verbose"}, description = "Print verbose output.")
     boolean verbose;
 
+    @Inject
+    StackOverflowHttpClient client;
+
     @Override
     public void run() {
-        System.out.println("Search command running...");
+        ApiResponse<Question> response = client.search(query, tag, limit, sort);
+        response.items
+                .forEach(System.out::println);
     }
 }
