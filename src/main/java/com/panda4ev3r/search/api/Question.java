@@ -1,8 +1,10 @@
 package com.panda4ev3r.search.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.micronaut.core.annotation.Introspected;
 import picocli.CommandLine.Help.Ansi;
 
+@Introspected
 public final class Question {
     public String title;
     public String link;

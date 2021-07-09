@@ -1,10 +1,12 @@
 package com.panda4ev3r.search.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.micronaut.core.annotation.Introspected;
 
 import java.util.Collections;
 import java.util.List;
 
+@Introspected
 public final class ApiResponse<T> {
 
     public List<Question> items = Collections.emptyList();
