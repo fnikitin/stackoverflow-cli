@@ -31,7 +31,7 @@ class StackoverflowCliCommandSpec extends Specification {
         given:
         ByteArrayOutputStream baos = new ByteArrayOutputStream()
         PrintStream out = System.out;
-        System.setOut(out)
+        System.setOut(new PrintStream(baos))
 
         String[] args = ["search", "-q", "merge maps", "-t", "java", "--verbose"] as String[]
         PicocliRunner.run(StackoverflowCliCommand, ctx, args)
