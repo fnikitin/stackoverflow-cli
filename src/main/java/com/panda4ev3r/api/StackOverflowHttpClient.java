@@ -11,7 +11,7 @@ public interface StackOverflowHttpClient {
     @Get("/search?site=stackoverflow")
     ApiResponse<Question> search(
         @QueryValue("intitle") String query,
-        @QueryValue("tag") String tag,
+        @QueryValue("tagged") String tag,
         @QueryValue("pagesize") int limit,
         @QueryValue("sort") String sort
     );
