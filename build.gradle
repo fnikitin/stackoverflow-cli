@@ -38,8 +38,8 @@ application {
     mainClass.set("com.panda4ev3r.StackoverflowCliCommand")
 }
 java {
-    sourceCompatibility = JavaVersion.toVersion("8")
-    targetCompatibility = JavaVersion.toVersion("8")
+    sourceCompatibility = JavaVersion.toVersion("11")
+    targetCompatibility = JavaVersion.toVersion("11")
 }
 
 
