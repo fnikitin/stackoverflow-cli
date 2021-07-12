@@ -1,4 +1,4 @@
-package com.panda4ev3r.search.api;
+package com.panda4ev3r.api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.micronaut.core.annotation.Introspected;

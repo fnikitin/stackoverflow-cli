@@ -1,4 +1,4 @@
-package com.panda4ev3r.search.api;
+package com.panda4ev3r.api;
 
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.QueryValue;

@@ -1,8 +1,8 @@
 package com.panda4ev3r.search;
 
-import com.panda4ev3r.search.api.ApiResponse;
-import com.panda4ev3r.search.api.Question;
-import com.panda4ev3r.search.api.StackOverflowHttpClient;
+import com.panda4ev3r.api.ApiResponse;
+import com.panda4ev3r.api.Question;
+import com.panda4ev3r.api.StackOverflowHttpClient;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Command;
 
