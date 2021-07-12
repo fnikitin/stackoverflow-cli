@@ -13,18 +13,6 @@ class StackoverflowCliCommandSpec extends Specification {
 
     @Shared @AutoCleanup ApplicationContext ctx = ApplicationContext.run(Environment.CLI, Environment.TEST)
 
-    void "test stackoverflow-cli with command line option (generated)"() {
-        given:
-        ByteArrayOutputStream baos = new ByteArrayOutputStream()
-        System.setOut(new PrintStream(baos))
-
-        String[] args = ['-v'] as String[]
-        PicocliRunner.run(StackoverflowCliCommand, ctx, args)
-
-        expect:
-        baos.toString().contains('Hi!')
-    }
-
     void "test stackoverflow-cli search command"() {
         given:
         ByteArrayOutputStream baos = new ByteArrayOutputStream()
@@ -37,7 +25,7 @@ class StackoverflowCliCommandSpec extends Specification {
 
         // ✓ 9|3 Merge maps in Groovy
         expect:
-        baos.toString() =~ $/✓? \d+\|\d+ [^\n]+\n {6}https://stackoverflow.com/questions/\d+[a-z0-9\-]+/$
+        baos.toString() =~ $/\u2713? \d+\|\d+ [^\n]+\n {6}https://stackoverflow.com/questions/\d+[a-z0-9\-]+/$
     }
 }
 

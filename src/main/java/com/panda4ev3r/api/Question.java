@@ -28,7 +28,7 @@ public final class Question {
     public static String formatQuestion(final Question question) {
         return Ansi.AUTO.string(String.format(
            "@|bold,fg(green) %s|@ %d|%d @|bold,fg(yellow) %s|@%n      %s",
-                question.accepted ? "✓" : "",
+                question.accepted ? "\u2713" : "",
                 question.score,
                 question.answers,
                 question.title,
