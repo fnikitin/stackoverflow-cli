@@ -34,7 +34,6 @@ public final class SearchHttpRequest {
     }
 
     public ApiResponse<Question> execute(String query, String tag, int limit, String sort) {
-
         var client = HttpClient.newHttpClient();
 
         var uri = UriBuilder.of(stackOverflowApiUrl)
@@ -42,6 +41,7 @@ public final class SearchHttpRequest {
                 .queryParam("site", "stackoverflow")
                 .queryParam("intitle", query)
                 .queryParam("tagged", tag)
+                .queryParam("pagesize", limit)
                 .queryParam("sort", sort)
                 .build();
 
