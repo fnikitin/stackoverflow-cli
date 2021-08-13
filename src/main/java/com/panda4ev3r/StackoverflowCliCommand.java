@@ -10,6 +10,7 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 // https://www.youtube.com/watch?v=Xdcg4Drg1hc&ab_channel=SzymonStepniak
+// $ mn create-cli-app --jdk=11 -t spock -f graalvm,http-client com.panda4ev3r.stackoverflow-cli
 @Command(name = "stackoverflow-cli", description = "...",
         mixinStandardHelpOptions = true, subcommands = { SearchCommand.class })
 public class StackoverflowCliCommand implements Runnable {

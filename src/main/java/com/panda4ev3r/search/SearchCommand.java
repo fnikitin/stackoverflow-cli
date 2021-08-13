@@ -1,41 +1,42 @@
 package com.panda4ev3r.search;
 
 import com.panda4ev3r.api.Question;
-import com.panda4ev3r.api.SearchHttpRequest;
+import com.panda4ev3r.api.StackOverflowHttpClient;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Command;
 
 import javax.inject.Inject;
 
+// every picocli command has to implement either Runnable of Callable
 @Command(name = "search", description = "Search questions matching criteria",
         mixinStandardHelpOptions = true)
 public final class SearchCommand implements Runnable {
 
     @Option(names = {"-q", "--query"}, description = "Search phrase.")
-    String query = "";
+    private String query = "";
 
     @Option(names = {"-t", "--tag"}, description = "Search inside specific tag.")
-    String tag = "";
+    private String tag = "";
 
     @Option(names = {"-n", "--limit"}, description = "Limit results. Default: 10")
-    int limit = 10;
+    private int limit = 10;
 
     @Option(names = {"-s", "--sort-by"}, description = "Available values: relevance, votes, creation, action.")
-    String sort = "relevance";
+    private String sort = "relevance";
 
     @Option(names = {"--verbose"}, description = "Print verbose output.")
-    boolean verbose;
-
-    //@Inject
-    //StackOverflowHttpClient client;
+    private boolean verbose;
 
     @Inject
-    SearchHttpRequest request;
+    private StackOverflowHttpClient client;
+
+    //@Inject
+    //private SearchHttpRequest request;
 
     @Override
     public void run() {
-        //var response = client.search(query, tag, limit, sort);
-        var response = request.execute(query, tag, limit, sort);
+        var response = client.search(query, tag, limit, sort);
+        //var response = request.execute(query, tag, limit, sort);
 
         response.items.stream()
                 .map(Question::formatQuestion)
